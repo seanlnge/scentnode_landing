@@ -1,0 +1,64 @@
+---
+---
+
+<section class="cta-dark section" id="waitlist" aria-labelledby="cta-heading">
+	<div class="container">
+		<h2 id="cta-heading" class="heading-xl cta-dark__title">
+			Start Your Sensory Journey.
+		</h2>
+		<div class="waitlist-block waitlist-block--center">
+			<div data-waitlist-wrap>
+				<form
+					class="waitlist-form waitlist-form--bare"
+					data-waitlist-form
+					data-source="cta"
+				>
+					<label class="sr-only" for="email-cta">Email</label>
+					<input
+						id="email-cta"
+						type="email"
+						name="email"
+						required
+						autocomplete="email"
+						placeholder="Your email address"
+					/>
+					<button type="submit" class="btn-pill btn-pill--peach cta-dark__submit">
+						Get early access
+					</button>
+					<p data-waitlist-message role="status"></p>
+				</form>
+			</div>
+			<p class="waitlist-caption cta-dark__caption">
+				Join 200+ people already on the waitlist.
+			</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.cta-dark {
+		background: #141211;
+		color: var(--white);
+		text-align: center;
+		padding-block: clamp(4rem, 10vw, 6rem);
+	}
+	.cta-dark__title {
+		color: var(--white);
+		margin-bottom: 2.25rem;
+		max-width: 20ch;
+		margin-inline: auto;
+	}
+	.waitlist-block--center {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.cta-dark__caption {
+		color: rgba(255, 255, 255, 0.45);
+	}
+	.cta-dark__submit {
+		font-size: 0.72rem;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+</style>

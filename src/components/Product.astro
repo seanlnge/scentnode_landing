@@ -1,0 +1,57 @@
+---
+---
+
+<section class="section" aria-labelledby="product-heading">
+	<div class="container grid-2">
+		<div>
+			<p class="section-label">The product</p>
+			<h2 id="product-heading" class="heading-lg">The Nomad Kit</h2>
+			<p class="product__body">
+				Prepare a sophisticated scent experience on-the-go. Our kit contains everything you need to
+				start your scent journey today, and it's all packed into our signature travel case.
+			</p>
+			<ul class="feature-list">
+				<li><span class="dot" aria-hidden="true"></span> 15 ethically sourced essences</li>
+				<li><span class="dot" aria-hidden="true"></span> Signature travel case</li>
+				<li><span class="dot" aria-hidden="true"></span> Scent-mixing tool</li>
+			</ul>
+		</div>
+		<div class="product__scene">
+			<img
+				class="product__photo"
+				src="/images/kit.PNG"
+				width="800"
+				height="600"
+				alt="The Nomad Kit — essence bottles, mixing tools, blending notes, and fragrance guide laid out"
+				loading="lazy"
+				decoding="async"
+			/>
+		</div>
+	</div>
+</section>
+
+<style>
+	.product__body {
+		color: var(--muted);
+		margin: 0 0 0.5rem;
+		max-width: 32rem;
+	}
+	.product__scene {
+		border-radius: var(--radius-lg, 1.75rem);
+		background: linear-gradient(180deg, #faf7f4 0%, #ebe6de 100%);
+		box-shadow:
+			0 24px 60px rgba(28, 25, 23, 0.08),
+			inset 0 1px 0 rgba(255, 255, 255, 0.9);
+		overflow: hidden;
+		padding: clamp(1rem, 3vw, 2rem);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.product__photo {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		border-radius: calc(var(--radius-lg, 1.75rem) - 0.5rem);
+	}
+</style>

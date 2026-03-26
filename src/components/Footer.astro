@@ -1,0 +1,97 @@
+---
+---
+
+<footer class="footer section">
+	<div class="container footer-grid">
+		<div class="footer-col">
+			<a href="#top" class="logo footer-logo"><img src="/images/logo.PNG" alt="" class="logo__mark" width="32" height="32" />ScentNode</a>
+			<p class="footer-tagline">
+				Scent intelligence curated for the modern nomad.
+			</p>
+		</div>
+		<div class="footer-col">
+			<h4>Journey</h4>
+			<ul>
+				<li><a href="#top">Home</a></li>
+				<li><a href="#experience-heading">Tools</a></li>
+				<li>
+					<a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+				</li>
+			</ul>
+		</div>
+		<div class="footer-col">
+			<h4>Connect</h4>
+			<ul>
+				<li><a href="mailto:hello@scentnode.com">Contact</a></li>
+				<li><a href="mailto:press@scentnode.com">Press</a></li>
+				<li>
+					<a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+				</li>
+			</ul>
+		</div>
+		<div class="footer-col">
+			<h4>Subscribe</h4>
+			<p class="footer-tagline" style="margin-top: 0; margin-bottom: 1rem">
+				Stay up to date with our latest news.
+			</p>
+			<div data-waitlist-wrap>
+				<form
+					class="waitlist-form waitlist-form--footer-row"
+					data-waitlist-form
+					data-source="footer"
+				>
+					<label class="sr-only" for="email-footer">Email</label>
+					<input
+						id="email-footer"
+						type="email"
+						name="email"
+						required
+						autocomplete="email"
+						placeholder="Email"
+					/>
+					<button
+						type="submit"
+						class="btn-pill btn-pill--terra btn-pill--square"
+						aria-label="Submit email"
+					>
+						→
+					</button>
+					<p data-waitlist-message role="status"></p>
+				</form>
+			</div>
+		</div>
+	</div>
+	<p class="footer-legal container">
+		© {new Date().getFullYear()} ScentNode. All rights reserved.
+	</p>
+</footer>
+
+<style>
+	.footer {
+		background: #f3f0ea;
+		padding-bottom: 2rem;
+	}
+	.footer-logo {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.logo__mark {
+		width: 1.75rem;
+		height: 1.75rem;
+		object-fit: contain;
+	}
+	.footer-legal {
+		text-align: center;
+		font-size: 0.8rem;
+		color: var(--muted);
+		margin: 3rem auto 0;
+	}
+	.footer-col form [data-waitlist-message] {
+		flex-basis: 100%;
+		order: 3;
+	}
+	.footer-col .waitlist-form {
+		flex-wrap: wrap;
+	}
+</style>

@@ -1,0 +1,49 @@
+---
+---
+
+<section class="section" aria-labelledby="experience-heading">
+	<div class="container">
+		<p class="section-label">The experience</p>
+		<h2 id="experience-heading" class="heading-lg">
+			Memories Transformed into Notes.
+		</h2>
+		<div class="exp-grid">
+			<article class="card">
+				<h3>Olfactory Mapping</h3>
+				<p>
+					Our algorithms map out your favorite scent profiles to develop an olfactory blueprint
+					profile that travels with you across the globe.
+				</p>
+			</article>
+			<article class="card">
+				<h3>Digital Atelier</h3>
+				<p>
+					Access a first-of-its-kind digital atelier through the ScentNode dashboard, helping you
+					become your own perfumer, wherever home is.
+				</p>
+			</article>
+			<blockquote class="card-quote">
+				<p>
+					A fragrance should be the map of where you’ve been and the vision of where you’re going.
+				</p>
+			</blockquote>
+		</div>
+	</div>
+</section>
+
+<style>
+	.exp-grid {
+		display: grid;
+		gap: 1.25rem;
+		margin-top: 2.5rem;
+	}
+	@media (min-width: 768px) {
+		.exp-grid {
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: auto auto;
+		}
+		.card-quote {
+			grid-column: 1 / -1;
+		}
+	}
+</style>

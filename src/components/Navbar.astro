@@ -1,0 +1,46 @@
+---
+---
+
+<header class="nav">
+	<div class="nav__inner container">
+		<a href="#top" class="logo"><img src="/images/logo.PNG" alt="" class="logo__mark" width="32" height="32" />ScentNode</a>
+		<a href="#waitlist" class="btn-pill btn-pill--terra nav__cta">Join waitlist</a>
+	</div>
+</header>
+
+<style>
+	.nav {
+		position: sticky;
+		top: 0;
+		z-index: 50;
+		background: color-mix(in srgb, var(--cream) 92%, transparent);
+		backdrop-filter: blur(10px);
+		border-bottom: 1px solid rgba(28, 25, 23, 0.06);
+	}
+	.nav__inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1rem 1.5rem;
+		max-width: var(--max);
+		margin-inline: auto;
+	}
+	.nav .logo {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.nav .logo:hover {
+		text-decoration: none;
+	}
+	.logo__mark {
+		width: 1.75rem;
+		height: 1.75rem;
+		object-fit: contain;
+	}
+	.nav__cta {
+		font-size: 0.72rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+</style>
