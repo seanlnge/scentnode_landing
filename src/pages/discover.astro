@@ -1,0 +1,812 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout
+	title="Find Your Scent | ScentNode"
+	description="Share a memory and your favorite things to generate a custom fragrance profile before joining the ScentNode waitlist."
+>
+	<header class="discover-topbar">
+		<div class="container discover-topbar__inner">
+			<a href="/" class="discover-brand">
+				<img src="/images/logo.PNG" alt="" width="32" height="32" />
+				<span>ScentNode</span>
+			</a>
+			<nav class="discover-nav" aria-label="Discover page">
+				<a href="#discover-form">Profile</a>
+				<a href="#discover-how">Process</a>
+				<a href="#discover-footer">Connect</a>
+			</nav>
+			<a href="#discover-waitlist" class="btn-pill btn-pill--terra discover-topbar__cta">
+				Join waitlist
+			</a>
+		</div>
+	</header>
+
+	<main class="discover-page" id="top">
+		<div class="discover-cloud discover-cloud--terra" aria-hidden="true"></div>
+		<div class="discover-cloud discover-cloud--sage" aria-hidden="true"></div>
+		<div class="discover-cloud discover-cloud--peach" aria-hidden="true"></div>
+
+		<section class="discover-hero section">
+			<div class="container discover-hero__inner">
+				<p class="section-label">Scent profiling</p>
+				<h1 class="heading-xl discover-title">Turn a memory into your ideal fragrance profile.</h1>
+				<p class="discover-lede">
+					Tell us about a vivid memory, the things you love, and the mood you want to bottle.
+					We’ll translate it into a first-pass accord blend, then save it with your waitlist signup.
+				</p>
+			</div>
+		</section>
+
+		<section class="discover-shell">
+			<div class="container discover-grid">
+				<section class="discover-panel discover-panel--form" id="discover-form">
+					<div class="discover-panel__header">
+						<h2 class="heading-lg">Describe your world</h2>
+						<p class="discover-copy">
+							Use a few sensory cues. The richer the image, the better the fragrance map.
+						</p>
+					</div>
+
+					<form class="discover-form" data-discover-form>
+						<label class="discover-field">
+							<span>Memory</span>
+							<textarea
+								name="memory"
+								rows="3"
+								placeholder="A rainy city walk, your grandmother’s kitchen, a summer road trip..."
+								required
+							></textarea>
+						</label>
+
+						<label class="discover-field">
+							<span>Favorite things</span>
+							<input
+								type="text"
+								name="favoriteThings"
+								placeholder="Vinyl records, bookstores, fresh linen, old libraries"
+							/>
+						</label>
+
+						<div class="discover-form__row">
+							<label class="discover-field">
+								<span>Favorite color</span>
+								<input type="text" name="favoriteColor" placeholder="Olive green" />
+							</label>
+
+							<label class="discover-field">
+								<span>Favorite food</span>
+								<input type="text" name="favoriteFood" placeholder="Peaches" />
+							</label>
+						</div>
+
+						<div class="discover-form__row">
+							<label class="discover-field">
+								<span>Desired vibe</span>
+								<input type="text" name="vibe" placeholder="Grounded, luminous, magnetic" />
+							</label>
+
+							<label class="discover-field">
+								<span>Avoid</span>
+								<input type="text" name="avoid" placeholder="Too sweet, too powdery" />
+							</label>
+						</div>
+
+						<div class="discover-form__actions">
+							<button type="submit" class="btn-pill btn-pill--terra discover-submit">
+								Generate my scent profile
+							</button>
+							<p class="discover-message" data-discover-message role="status"></p>
+						</div>
+					</form>
+				</section>
+
+				<aside class="discover-rail">
+					<div class="discover-mosaic" aria-hidden="true">
+						<div class="discover-mosaic__tile discover-mosaic__tile--photo">
+							<img
+								src="/images/hero_bottle.png"
+								alt="ScentNode fragrance bottle"
+								loading="lazy"
+								decoding="async"
+							/>
+						</div>
+						<div class="discover-mosaic__tile discover-mosaic__tile--forest">
+							<div class="discover-mosaic__mist"></div>
+							<div class="discover-mosaic__stems"></div>
+						</div>
+					</div>
+
+					<section class="discover-panel discover-panel--steps" id="discover-how">
+						<p class="section-label">How it works</p>
+						<div class="discover-steps">
+							<div class="discover-step">
+								<span class="discover-step__num">1.</span>
+								<div>
+									<h3>Share your cues</h3>
+									<p>
+										A memory plus a few favorites gives enough emotional texture for a fragrance
+										direction.
+									</p>
+								</div>
+							</div>
+							<div class="discover-step">
+								<span class="discover-step__num">2.</span>
+								<div>
+									<h3>We map the accords</h3>
+									<p>
+										An OpenAI-powered classifier turns your story into weighted fragrance accords.
+									</p>
+								</div>
+							</div>
+							<div class="discover-step">
+								<span class="discover-step__num">3.</span>
+								<div>
+									<h3>Save it to your waitlist spot</h3>
+									<p>
+										Once the profile feels right, join the waitlist and we’ll store the accord mix
+										with your signup.
+									</p>
+								</div>
+							</div>
+						</div>
+					</section>
+				</aside>
+			</div>
+		</section>
+
+		<section class="discover-result section" data-discover-result hidden>
+			<div class="container discover-grid discover-grid--result">
+				<section class="discover-panel discover-panel--profile">
+					<p class="section-label">Your profile</p>
+					<h2 class="heading-lg">Accord balance</h2>
+					<p class="discover-copy" data-profile-summary></p>
+					<div class="discover-profile" data-profile-list></div>
+				</section>
+
+				<section
+					class="discover-panel discover-panel--waitlist"
+					data-discover-waitlist-card
+					id="discover-waitlist"
+				>
+					<p class="section-label">Save this profile</p>
+					<h2 class="heading-lg">Join the waitlist</h2>
+					<p class="discover-copy">
+						Your saved waitlist entry will include this accord mix so we can use it later.
+					</p>
+					<form class="discover-form discover-form--waitlist" data-discover-waitlist-form>
+						<label class="discover-field">
+							<span>Email</span>
+							<input
+								type="email"
+								name="email"
+								autocomplete="email"
+								placeholder="you@example.com"
+								data-discover-email
+								required
+							/>
+						</label>
+						<div class="discover-form__actions">
+							<button type="submit" class="btn-pill btn-pill--peach discover-submit">
+								Save my profile
+							</button>
+							<p class="discover-message" data-discover-waitlist-message role="status"></p>
+						</div>
+					</form>
+				</section>
+			</div>
+		</section>
+	</main>
+
+	<footer class="discover-footer" id="discover-footer">
+		<div class="container discover-footer__grid">
+			<div class="discover-footer__brand">
+				<a href="/" class="discover-brand discover-brand--footer">
+					<img src="/images/logo.PNG" alt="" width="32" height="32" />
+					<span>ScentNode</span>
+				</a>
+				<p>
+					Crafted for the modern nomad. Fragrance intelligence shaped by memory, atmosphere, and
+					emotion.
+				</p>
+			</div>
+
+			<div>
+				<h3>Explore</h3>
+				<ul>
+					<li><a href="#discover-form">Profile</a></li>
+					<li><a href="#discover-how">Process</a></li>
+					<li><a href="/">Home</a></li>
+				</ul>
+			</div>
+
+			<div>
+				<h3>Connect</h3>
+				<ul>
+					<li><a href="mailto:hello@scentnode.com">Contact</a></li>
+					<li><a href="mailto:press@scentnode.com">Press</a></li>
+					<li><a href="#discover-waitlist">Join waitlist</a></li>
+				</ul>
+			</div>
+
+			<div>
+				<h3>Newsletter</h3>
+				<div class="discover-footer__newsletter">
+					<input type="email" placeholder="Email address" aria-label="Email address" />
+					<button type="button" aria-label="Submit email">→</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="container discover-footer__meta">
+			<span>© {new Date().getFullYear()} ScentNode. Crafted for the modern nomad.</span>
+			<div class="discover-footer__icons" aria-hidden="true">
+				<span>↗</span>
+				<span>◦</span>
+			</div>
+		</div>
+	</footer>
+</Layout>
+
+<script>
+	import '../scripts/discover-flow';
+</script>
+
+<style>
+	.discover-topbar {
+		position: sticky;
+		top: 0;
+		z-index: 40;
+		backdrop-filter: blur(16px);
+		background: color-mix(in srgb, rgba(252, 249, 245, 0.88) 92%, transparent);
+		border-bottom: 1px solid rgba(28, 25, 23, 0.06);
+	}
+
+	.discover-topbar__inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 1rem 1.5rem;
+	}
+
+	.discover-brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.55rem;
+		font-family: var(--font-serif);
+		font-size: 1.45rem;
+		font-style: italic;
+		letter-spacing: 0.01em;
+	}
+
+	.discover-brand img {
+		width: 1.75rem;
+		height: 1.75rem;
+		object-fit: contain;
+	}
+
+	.discover-nav {
+		display: none;
+		align-items: center;
+		gap: 2rem;
+	}
+
+	.discover-nav a {
+		font-size: 0.72rem;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: rgba(28, 25, 23, 0.62);
+	}
+
+	.discover-topbar__cta {
+		font-size: 0.72rem;
+		letter-spacing: 0.14em;
+	}
+
+	.discover-page {
+		position: relative;
+		padding-bottom: 5rem;
+		overflow: clip;
+	}
+
+	.discover-hero {
+		padding-top: clamp(4.5rem, 10vw, 7rem);
+		padding-bottom: clamp(2.5rem, 5vw, 4rem);
+	}
+
+	.discover-hero__inner {
+		max-width: 52rem;
+		position: relative;
+		z-index: 1;
+	}
+
+	.discover-title {
+		max-width: 11ch;
+		font-size: clamp(3.25rem, 7vw, 6rem);
+		line-height: 0.97;
+		letter-spacing: -0.03em;
+		margin-bottom: 1.4rem;
+	}
+
+	.discover-lede,
+	.discover-copy {
+		color: var(--muted);
+		max-width: 39rem;
+		font-size: 1.08rem;
+	}
+
+	.discover-cloud {
+		position: absolute;
+		filter: blur(52px);
+		opacity: 0.44;
+		border-radius: 55% 45% 40% 60% / 50% 35% 65% 50%;
+		pointer-events: none;
+	}
+
+	.discover-cloud--terra {
+		width: 25rem;
+		height: 25rem;
+		top: 6rem;
+		left: -8rem;
+		background: rgba(164, 90, 65, 0.23);
+	}
+
+	.discover-cloud--sage {
+		width: 21rem;
+		height: 21rem;
+		top: 28rem;
+		right: -7rem;
+		background: rgba(190, 205, 152, 0.34);
+	}
+
+	.discover-cloud--peach {
+		width: 18rem;
+		height: 18rem;
+		bottom: 7rem;
+		left: 28%;
+		background: rgba(250, 212, 200, 0.5);
+	}
+
+	.discover-shell {
+		padding: 0 1.5rem;
+	}
+
+	.discover-grid {
+		display: grid;
+		gap: clamp(2rem, 4vw, 4rem);
+		align-items: start;
+	}
+
+	@media (min-width: 960px) {
+		.discover-grid {
+			grid-template-columns: minmax(0, 1.2fr) minmax(19rem, 0.78fr);
+		}
+	}
+
+	.discover-panel {
+		position: relative;
+		z-index: 1;
+		border-radius: 2rem;
+		background: rgba(255, 255, 255, 0.76);
+		box-shadow: 0 16px 40px rgba(28, 25, 23, 0.06);
+	}
+
+	.discover-panel--form {
+		padding: clamp(2rem, 4vw, 3rem);
+		background: rgba(255, 255, 255, 0.84);
+		backdrop-filter: blur(14px);
+	}
+
+	.discover-panel__header {
+		margin-bottom: 2rem;
+	}
+
+	.discover-form {
+		display: grid;
+		gap: 2rem;
+	}
+
+	.discover-form__row {
+		display: grid;
+		gap: 2rem;
+	}
+
+	@media (min-width: 720px) {
+		.discover-form__row {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.discover-field {
+		display: grid;
+		gap: 0.85rem;
+	}
+
+	.discover-field span {
+		font-size: 0.72rem;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: rgba(28, 25, 23, 0.62);
+		font-weight: 600;
+	}
+
+	.discover-field input,
+	.discover-field textarea {
+		width: 100%;
+		border: 0;
+		border-bottom: 1px solid rgba(134, 115, 109, 0.32);
+		border-radius: 0;
+		padding: 0 0 0.85rem;
+		font: inherit;
+		background: transparent;
+		color: var(--ink);
+		transition: border-color 0.18s ease, color 0.18s ease;
+	}
+
+	.discover-field input::placeholder,
+	.discover-field textarea::placeholder {
+		color: rgba(134, 115, 109, 0.72);
+	}
+
+	.discover-field input:focus,
+	.discover-field textarea:focus {
+		outline: none;
+		border-bottom-color: var(--terracotta);
+	}
+
+	.discover-field textarea {
+		resize: vertical;
+		min-height: 6.25rem;
+	}
+
+	.discover-submit {
+		width: 100%;
+		min-height: 3.9rem;
+		font-size: 0.74rem;
+		letter-spacing: 0.2em;
+		box-shadow: 0 14px 30px rgba(146, 84, 61, 0.22);
+	}
+
+	.discover-form__actions {
+		padding-top: 0.5rem;
+	}
+
+	.discover-message {
+		margin: 0.85rem 0 0;
+		min-height: 1.5rem;
+		font-size: 0.9rem;
+		color: var(--muted);
+	}
+
+	.discover-message[data-state='error'] {
+		color: #b91c1c;
+	}
+
+	.discover-message[data-state='success'] {
+		color: #2f5e33;
+	}
+
+	.discover-rail {
+		display: grid;
+		gap: 2rem;
+	}
+
+	.discover-mosaic {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: 1rem;
+		min-height: 21rem;
+	}
+
+	.discover-mosaic__tile {
+		position: relative;
+		overflow: hidden;
+		border-radius: 2rem;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(243, 238, 231, 0.9));
+		box-shadow: 0 16px 40px rgba(28, 25, 23, 0.08);
+	}
+
+	.discover-mosaic__tile--photo {
+		min-height: 17rem;
+	}
+
+	.discover-mosaic__tile--photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		background:
+			linear-gradient(160deg, rgba(255, 231, 222, 0.96), rgba(238, 226, 210, 0.92)),
+			radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.75), transparent 40%);
+		padding: 1.35rem 0.75rem;
+	}
+
+	.discover-mosaic__tile--forest {
+		transform: translateY(2.8rem);
+		background:
+			linear-gradient(180deg, rgba(209, 217, 177, 0.2), rgba(122, 139, 101, 0.28)),
+			linear-gradient(135deg, #b7c28b 0%, #6f8258 45%, #46503d 100%);
+	}
+
+	.discover-mosaic__mist {
+		position: absolute;
+		inset: auto 12% 12% auto;
+		width: 76%;
+		height: 46%;
+		filter: blur(24px);
+		border-radius: 999px;
+		background: rgba(251, 247, 240, 0.35);
+	}
+
+	.discover-mosaic__stems {
+		position: absolute;
+		inset: 12% 14%;
+		background:
+			linear-gradient(
+				90deg,
+				transparent 0 8%,
+				rgba(53, 67, 35, 0.34) 8% 10%,
+				transparent 10% 22%,
+				rgba(53, 67, 35, 0.38) 22% 24%,
+				transparent 24% 38%,
+				rgba(43, 56, 29, 0.3) 38% 40%,
+				transparent 40% 52%,
+				rgba(53, 67, 35, 0.34) 52% 54%,
+				transparent 54% 100%
+			);
+		opacity: 0.75;
+	}
+
+	.discover-panel--steps {
+		padding: 2.1rem 2rem 2.3rem;
+		background: rgba(244, 240, 234, 0.92);
+	}
+
+	.discover-steps {
+		display: grid;
+		gap: 1.65rem;
+	}
+
+	.discover-step {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 1rem;
+	}
+
+	.discover-step__num {
+		font-family: var(--font-serif);
+		font-size: 2rem;
+		line-height: 1;
+		color: rgba(146, 84, 61, 0.45);
+		font-style: italic;
+	}
+
+	.discover-steps h3 {
+		font-family: var(--font-serif);
+		font-size: 1.38rem;
+		font-weight: 500;
+		margin: 0 0 0.35rem;
+	}
+
+	.discover-steps p {
+		margin: 0;
+		color: var(--muted);
+	}
+
+	.discover-result {
+		padding-top: 3rem;
+		padding-bottom: 1rem;
+	}
+
+	.discover-grid--result {
+		grid-template-columns: 1fr;
+	}
+
+	@media (min-width: 960px) {
+		.discover-grid--result {
+			grid-template-columns: minmax(0, 1fr) minmax(20rem, 24rem);
+		}
+	}
+
+	.discover-panel--profile,
+	.discover-panel--waitlist {
+		padding: clamp(2rem, 4vw, 2.8rem);
+	}
+
+	.discover-profile {
+		display: grid;
+		gap: 1rem;
+		margin-top: 1.5rem;
+	}
+
+	.discover-profile__row {
+		display: grid;
+		gap: 0.45rem;
+	}
+
+	.discover-profile__label {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+		text-transform: capitalize;
+	}
+
+	.discover-profile__bar {
+		height: 0.8rem;
+		border-radius: 999px;
+		background: rgba(28, 25, 23, 0.08);
+		overflow: hidden;
+	}
+
+	.discover-profile__bar span {
+		display: block;
+		height: 100%;
+		border-radius: inherit;
+		background: linear-gradient(90deg, var(--terracotta), #d38b70);
+	}
+
+	.discover-panel--waitlist {
+		background: linear-gradient(180deg, #171412, #211b18);
+		color: var(--white);
+	}
+
+	.discover-panel--waitlist .heading-lg,
+	.discover-panel--waitlist .section-label {
+		color: var(--white);
+	}
+
+	.discover-panel--waitlist .discover-copy,
+	.discover-panel--waitlist .discover-message {
+		color: rgba(255, 255, 255, 0.76);
+	}
+
+	.discover-panel--waitlist .discover-field span {
+		color: rgba(255, 255, 255, 0.68);
+	}
+
+	.discover-panel--waitlist .discover-field input {
+		border-bottom-color: rgba(255, 255, 255, 0.22);
+		color: var(--white);
+	}
+
+	.discover-panel--waitlist .discover-field input::placeholder {
+		color: rgba(255, 255, 255, 0.42);
+	}
+
+	.discover-panel--waitlist .discover-field input:focus {
+		border-bottom-color: var(--peach);
+	}
+
+	.discover-waitlist--joined {
+		box-shadow: 0 0 0 1px rgba(209, 217, 177, 0.3);
+	}
+
+	.discover-footer {
+		background: #f1ede7;
+		padding: 4.5rem 1.5rem 2rem;
+		border-top: 1px solid rgba(28, 25, 23, 0.06);
+	}
+
+	.discover-footer__grid {
+		display: grid;
+		gap: 2.5rem;
+	}
+
+	@media (min-width: 760px) {
+		.discover-footer__grid {
+			grid-template-columns: 1.35fr 1fr 1fr 1.15fr;
+		}
+
+		.discover-nav {
+			display: flex;
+		}
+	}
+
+	@media (min-width: 960px) {
+		.discover-rail {
+			position: sticky;
+			top: 6.5rem;
+		}
+	}
+
+	.discover-footer__brand p {
+		max-width: 16rem;
+		color: var(--muted);
+		margin-top: 0.8rem;
+	}
+
+	.discover-brand--footer {
+		font-size: 1.3rem;
+	}
+
+	.discover-footer h3 {
+		margin: 0 0 1rem;
+		font-size: 0.78rem;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		font-weight: 600;
+		color: rgba(28, 25, 23, 0.62);
+	}
+
+	.discover-footer ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		gap: 0.5rem;
+		color: var(--muted);
+	}
+
+	.discover-footer__newsletter {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		border-bottom: 1px solid rgba(28, 25, 23, 0.22);
+		padding-bottom: 0.45rem;
+	}
+
+	.discover-footer__newsletter input,
+	.discover-footer__newsletter button {
+		border: 0;
+		background: transparent;
+		font: inherit;
+	}
+
+	.discover-footer__newsletter input {
+		flex: 1;
+		min-width: 0;
+		outline: none;
+	}
+
+	.discover-footer__newsletter button {
+		cursor: pointer;
+	}
+
+	.discover-footer__meta {
+		margin-top: 3.2rem;
+		padding-top: 1.4rem;
+		border-top: 1px solid rgba(28, 25, 23, 0.08);
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		color: rgba(28, 25, 23, 0.55);
+		font-size: 0.76rem;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.discover-footer__icons {
+		display: flex;
+		gap: 1rem;
+		font-size: 1rem;
+	}
+
+	@media (min-width: 760px) {
+		.discover-footer__meta {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
+
+	@media (max-width: 759px) {
+		.discover-topbar__cta {
+			padding-inline: 1rem;
+		}
+	}
+
+	@media (max-width: 959px) {
+		.discover-mosaic {
+			max-width: 26rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.discover-mosaic__tile--forest {
+			transform: none;
+		}
+	}
+</style>

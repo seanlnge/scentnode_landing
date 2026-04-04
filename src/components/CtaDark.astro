@@ -4,32 +4,17 @@
 <section class="cta-dark section" id="waitlist" aria-labelledby="cta-heading">
 	<div class="container">
 		<h2 id="cta-heading" class="heading-xl cta-dark__title">
-			Start Your Sensory Journey.
+			Find the scent that feels like your memory.
 		</h2>
+		<p class="cta-dark__lede">
+			Start with a few sensory cues, get your accord blend, then save it with your waitlist signup.
+		</p>
 		<div class="waitlist-block waitlist-block--center">
-			<div data-waitlist-wrap>
-				<form
-					class="waitlist-form waitlist-form--bare"
-					data-waitlist-form
-					data-source="cta"
-				>
-					<label class="sr-only" for="email-cta">Email</label>
-					<input
-						id="email-cta"
-						type="email"
-						name="email"
-						required
-						autocomplete="email"
-						placeholder="Your email address"
-					/>
-					<button type="submit" class="btn-pill btn-pill--peach cta-dark__submit">
-						Get early access
-					</button>
-					<p data-waitlist-message role="status"></p>
-				</form>
-			</div>
+			<a href="/discover" class="btn-pill btn-pill--peach cta-dark__submit">
+				Start the scent finder
+			</a>
 			<p class="waitlist-caption cta-dark__caption">
-				Join 200+ people already on the waitlist.
+				Join 200+ people already exploring the waitlist.
 			</p>
 		</div>
 	</div>
@@ -44,9 +29,14 @@
 	}
 	.cta-dark__title {
 		color: var(--white);
-		margin-bottom: 2.25rem;
+		margin-bottom: 1rem;
 		max-width: 20ch;
 		margin-inline: auto;
+	}
+	.cta-dark__lede {
+		color: rgba(255, 255, 255, 0.72);
+		max-width: 34rem;
+		margin: 0 auto 2rem;
 	}
 	.waitlist-block--center {
 		display: flex;

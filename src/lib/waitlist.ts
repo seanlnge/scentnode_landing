@@ -9,6 +9,13 @@ import {
 
 export const WAITLIST_STORAGE_KEY = 'scentnode_waitlist_email';
 
+export type FragranceProfile = {
+	accords: Array<{
+		accord: string;
+		concentration: number;
+	}>;
+};
+
 export function readStoredWaitlistEmail(): string | null {
 	try {
 		return localStorage.getItem(WAITLIST_STORAGE_KEY);
@@ -71,7 +78,11 @@ function getClientDb(): Firestore {
 /** Stable Firestore doc id from email (URL-safe, collision-resistant for typical emails). */
 export function waitlistDocId(email: string): string {
 	const normalized = email.trim().toLowerCase();
-	return btoa(unescape(encodeURIComponent(normalized)))
+	let binary = '';
+	for (const byte of new TextEncoder().encode(normalized)) {
+		binary += String.fromCharCode(byte);
+	}
+	return btoa(binary)
 		.replace(/\//g, '_')
 		.replace(/\+/g, '-')
 		.replace(/=/g, '');
@@ -80,6 +91,7 @@ export function waitlistDocId(email: string): string {
 export async function submitWaitlistEmail(
 	email: string,
 	source: string,
+	fragranceProfile?: FragranceProfile,
 ): Promise<void> {
 	const firestore = getClientDb();
 	const id = waitlistDocId(email);
@@ -89,6 +101,7 @@ export async function submitWaitlistEmail(
 		{
 			email: email.trim().toLowerCase(),
 			source,
+			...(fragranceProfile ? { fragranceProfile } : {}),
 			createdAt: serverTimestamp(),
 			updatedAt: serverTimestamp(),
 		},

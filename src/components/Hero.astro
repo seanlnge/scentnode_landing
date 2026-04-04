@@ -11,27 +11,12 @@
 			<p class="hero__lede">
 				Design your own fragrance with AI-driven intelligence. Custom-made kits for the modern nomad.
 			</p>
-			<div class="waitlist-block">
-				<div data-waitlist-wrap>
-					<form
-						class="waitlist-form waitlist-form--hero"
-						data-waitlist-form
-						data-source="hero"
-					>
-						<label class="sr-only" for="email-hero">Email</label>
-						<input
-							id="email-hero"
-							type="email"
-							name="email"
-							required
-							autocomplete="email"
-							placeholder="Enter your email"
-						/>
-						<button type="submit" class="btn-pill btn-pill--terra">Join</button>
-						<p data-waitlist-message role="status"></p>
-					</form>
-				</div>
-				<p class="waitlist-caption">Join 200+ people already on the waitlist.</p>
+			<div class="hero__actions">
+				<a href="/discover" class="btn-pill btn-pill--terra">Find your scent</a>
+				<a href="#experience-heading" class="btn-pill hero__ghost">See how it works</a>
+			</div>
+			<div class="hero__meta">
+				<p class="waitlist-caption">Start with the scent finder, then save your profile to the waitlist.</p>
 			</div>
 		</div>
 		<div class="hero__visual">
@@ -88,6 +73,21 @@
 		max-width: 36rem;
 		margin: 0 0 2rem;
 		line-height: 1.65;
+	}
+	.hero__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.85rem;
+		align-items: center;
+	}
+	.hero__ghost {
+		border: 1px solid rgba(28, 25, 23, 0.12);
+		background: rgba(255, 255, 255, 0.72);
+		color: var(--ink);
+		box-shadow: 0 8px 30px rgba(28, 25, 23, 0.06);
+	}
+	.hero__meta {
+		margin-top: 1rem;
 	}
 	.hero__visual {
 		display: flex;
