@@ -4,18 +4,27 @@
 <section class="cta-dark section" id="waitlist" aria-labelledby="cta-heading">
 	<div class="container">
 		<h2 id="cta-heading" class="heading-xl cta-dark__title">
-			Find the scent that feels like your memory.
+			Elevate every package with scent.
 		</h2>
 		<p class="cta-dark__lede">
-			Start with a few sensory cues, get your accord blend, then save it with your waitlist signup.
+			Join the ScentNode waitlist at scentnode.com and turn unboxing into a sensory advantage your
+			customers remember.
 		</p>
-		<div class="waitlist-block waitlist-block--center">
-			<a href="/discover" class="btn-pill btn-pill--peach cta-dark__submit">
-				Start the scent finder
-			</a>
-			<p class="waitlist-caption cta-dark__caption">
-				Join 200+ people already exploring the waitlist.
-			</p>
+		<div class="waitlist-block waitlist-block--center" data-waitlist-wrap>
+			<form class="waitlist-form waitlist-form--bare" data-waitlist-form data-source="cta-dark">
+				<label class="sr-only" for="email-cta">Email</label>
+				<input
+					id="email-cta"
+					type="email"
+					name="email"
+					required
+					autocomplete="email"
+					placeholder="you@example.com"
+				/>
+				<button type="submit" class="btn-pill btn-pill--peach cta-dark__submit">Join waitlist</button>
+				<p data-waitlist-message role="status"></p>
+			</form>
+			<p class="waitlist-caption cta-dark__caption">Built for modern brands and personal creators.</p>
 		</div>
 	</div>
 </section>
@@ -42,6 +51,12 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+	}
+	.cta-dark .waitlist-form {
+		margin-inline: auto;
+	}
+	.cta-dark .waitlist-form [data-waitlist-message] {
+		text-align: center;
 	}
 	.cta-dark__caption {
 		color: rgba(255, 255, 255, 0.45);

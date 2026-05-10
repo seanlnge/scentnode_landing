@@ -16,6 +16,13 @@ export type FragranceProfile = {
 	}>;
 };
 
+export type WaitlistIntake = {
+	audience: 'business' | 'personal';
+	businessSize?: 'solo' | 'small' | 'growing' | 'established' | 'enterprise';
+	businessCategories?: string[];
+	businessCategoryOther?: string;
+};
+
 export function readStoredWaitlistEmail(): string | null {
 	try {
 		return localStorage.getItem(WAITLIST_STORAGE_KEY);
@@ -92,6 +99,7 @@ export async function submitWaitlistEmail(
 	email: string,
 	source: string,
 	fragranceProfile?: FragranceProfile,
+	intake?: WaitlistIntake,
 ): Promise<void> {
 	const firestore = getClientDb();
 	const id = waitlistDocId(email);
@@ -102,6 +110,7 @@ export async function submitWaitlistEmail(
 			email: email.trim().toLowerCase(),
 			source,
 			...(fragranceProfile ? { fragranceProfile } : {}),
+			...(intake ? { intake } : {}),
 			createdAt: serverTimestamp(),
 			updatedAt: serverTimestamp(),
 		},
